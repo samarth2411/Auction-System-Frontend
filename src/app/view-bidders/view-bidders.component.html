@@ -1,0 +1,11 @@
+<nav class="navbar h-50 mb-4" style="background-color: #90BBB5;">
+    <a class="navbar-brand" href="#">
+        <img src="/assets/images/logo.jpg" width="40" height="40" class="d-inline-block align-top ms-2" alt="">
+        <h2 class="d-inline-block ms-2" style="color: black;"><b>Auction</b></h2>
+    </a>
+    <h4 class="ms-auto me-4" style="color: white;"><b>Welcome, <span>{{user.name}}</span>.</b></h4>
+    <a class="me-4" style="text-decoration: none;" (click)="browseAuction()"><h4><b>Browse Auction</b></h4></a>
+    <a class="me-4" style="text-decoration: none;" (click)="uploadProduct()"><h4><b>Upload Product</b></h4></a>
+    <a class="me-4" style="text-decoration: none;" (click)="logoutUser()"><h4><b>Logout</b></h4></a>
+</nav>
+<sam-biddertable [parentData]="data"></sam-biddertable>

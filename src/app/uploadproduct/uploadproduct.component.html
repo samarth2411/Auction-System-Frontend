@@ -1,0 +1,80 @@
+<body>
+    <div class="container w-75">
+        <form class="shadow p-3 m-5 mb-5 bg-body rounded">
+            <div class="container w-85">
+                <!-- header imae and heading  -->
+                <div class="row m-1">
+                    <div class="col-sm-7">
+                        <h1 class="mt-5">Upload A New Product</h1>
+                    </div>
+                    <div class="col-sm-3 mr-4">
+                        <img w-75 src="/assets/images/auction.jpg" alt="get fit illustration" />
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+
+                <hr />
+
+                <!-- input details start -->
+                <div class="row m-3 mt-4">
+                    <label style="font-family: 'Merriweather', serif" for="name"
+                        class="col-sm-4 col-form-label fs-5">Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" placeholder="Product Name" name="name" [(ngModel)]="model.name"/>
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <label for="basePrice" class="col-sm-4 col-form-label fs-5"
+                        style="font-family: 'Merriweather', serif">Base Price</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" placeholder="0000000" name="price" [(ngModel)]="model.price" />
+                    </div>
+                </div>
+
+                <div class="row m-3">
+                    <label for="description" class="col-sm-4 col-form-label fs-5"
+                        style="font-family: 'Merriweather', serif">Product Description</label>
+                    <div class="form-floating col-sm-8">
+                        <textarea class="form-control" placeholder="Leave a comment here" name="description" [(ngModel)]="model.description"
+                            style="height: 100px"></textarea>
+                    </div>
+                </div>
+                <div class="m-3">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="inputEmail3" class="fs-5 col-form-label"
+                                    style="font-family: 'Merriweather', serif">Start Date</label>
+                                <input type="datetime-local" class="form-control" placeholder="Start Time" name="startTime" [(ngModel)]="model.startTime" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inputEmail3" class="fs-5 col-form-label"
+                                    style="font-family: 'Merriweather', serif">End Date</label>
+                                <input type="datetime-local" class="form-control" placeholder="Start Time" name="endTime" [(ngModel)]="model.endTime" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-3 my-4">
+                    <label for="uploadImage" class="col-sm-4 fs-5" style="font-family: 'Merriweather', serif">Upload
+                        Photo</label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <div class="col-sm">
+                                <input type="file" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="text-center">
+                    <button class="btn btn-primary btn-sm fs-5 px-3 py-1" type="submit" (click)="uploadProduct()">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

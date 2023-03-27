@@ -1,0 +1,31 @@
+<h2 class="me-4 pb-4 ms-4"><b>Previous Auction History</b></h2>
+<div class="table_responsive">
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Name</th>
+                <th scope="col">B.Price</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Approval</th>
+                <th scope="col">Status</th>
+                <th scope="col">inAuction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of allProducts">
+                <td scope="row"><img
+                        src="http://cdn.shopify.com/s/files/1/0273/2782/3947/articles/Instagram_Product_Auction.jpg?v=1656955072">
+                </td>
+                <td style="padding: 50px 0px;">{{data.name}}</td>
+                <td style="padding: 50px 0px;">{{data.price}}</td>
+                <td style="padding: 50px 0px;">{{data.startTime | date:'medium'}}</td>
+                <td style="padding: 50px 0px;">{{data.endTime | date:'medium'}}</td>
+                <td style="padding: 50px 0px;">{{data.inAuction? "Approved": data.rejected? "Rejected" : "Not Approved"}}</td>
+                <td style="padding: 50px 0px;">{{data.isActive? "Ongoing": data.inAuction? "Upcoming" : data.rejected? "Rejected" : "Not Approved"}}</td>
+                <td style="padding: 40px 0px;"><button [disabled]="!data.active" class="btn btn-primary" type="submit" (click)="viewAuctionMembers(data.id)">View</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

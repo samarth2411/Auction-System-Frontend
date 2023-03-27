@@ -1,0 +1,75 @@
+<section class="row d-flex justify-content-center" style="height: 88vh;">
+    <div class="col-md">
+        <div class="m-4 shadow rounded-3 row bg-white">
+            <div class="col m-2 row border border-2 rounded-3">
+                <div class="col-5">
+                    <img style="background-color: white" src="/assets/images/UserIcon.png" alt=""
+                        class="w-100 my-3 ms-2 d-flex rounded-circle" />
+                </div>
+
+                <div class="col me-2 my-auto">
+                    <h4 class="fw-light text-end pt-2">Total Users</h4>
+                    <h1 class="text-end px-4">{{count}}</h1>
+                </div>
+            </div>
+
+            <div class="col m-2 row border border-2 rounded-3">
+                <div class="col-5">
+                    <img src="/assets/images/AuctionHammer.jpg" alt="" class="w-100 my-3 ms-2 d-flex" />
+                </div>
+
+                <div class="col me-2 my-auto">
+                    <h4 class="fw-light text-end fs-4 pt-2">Acitve Auction</h4>
+                    <h1 class="text-end px-4">{{auctionCount}}</h1>
+                </div>
+            </div>
+
+            <div class="col m-2 row border border-2 rounded-3">
+                <div class="col-5">
+                    <img src="/assets/images/AuctionHammer.jpg" alt="" class="w-100 my-3 ms-2 d-flex" />
+                </div>
+
+                <div class="col me-2 my-auto">
+                    <h4 class="fw-light text-end pt-2">Total Users</h4>
+                    <h1 class="text-end px-4">{{count}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 m-4 me-5 mx-auto shadow bg-white">
+        <h4 class="m-4 text-end Font fw-bold">Total Request-<span>{{requestCount}}</span></h4>
+        <div class="d-flex justify-content-center card" *ngFor="let data of request | paginate:{
+            itemsPerPage: 3,
+            currentPage: page}">
+            <div style="background-color: rgb(243, 243, 254)" class="row m-2">
+                <div class="col-4">
+                    <img style="background-color: white" src="/assets/images/UserIcon.png" alt=""
+                        class="m-1 ms-2 d-flex rounded-circle card-img" />
+                </div>
+                <div class="col">
+                    <p class="fst-italic fw-light lh-1 mt-2">
+                        <span>
+                            <h6>{{data.name}}</h6>
+                        </span>{{data.description}}
+                    </p>
+                    <h6 class="fw-bold Font">Committed by <span>{{data.owner}}</span></h6>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button (click)="updateInAuction(data.id)" type="button "
+                        class="btn btn-success btn-sm mx-2 mb-2 rounded-3">
+                        Approve
+                    </button>
+                    <button (click)="updateIsRejected(data.id)" type="button"
+                        class="btn btn-danger btn-sm mx-2 mb-2 rounded-3">
+                        Reject
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="d-flex justify-content-center">
+            <pagination-controls previousLabel="Prev" nextLabel="Next"
+                (pageChange)="page = $event" class="text-center"></pagination-controls>
+        </div>
+    </div>
+</section>

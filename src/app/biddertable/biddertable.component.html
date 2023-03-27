@@ -1,0 +1,39 @@
+<h2 class="ms-4 pt-4 pb-4"><b>Bidders on this Products</b></h2>
+<div class="row ">
+<div class="card-deck pt-4  col-md-3" >
+    <div class="card ms-4" style="width: 350px; height: 400px;">
+        <img class="card-img-top"
+            src="http://cdn.shopify.com/s/files/1/0273/2782/3947/articles/Instagram_Product_Auction.jpg?v=1656955072"
+            alt="Card image cap" style="width: 350px; height: 250px;">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}.</p>
+        </div>
+    </div>
+</div>
+<div class="container m-4 col-md" style=" width: 1000px;">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Email</th>
+                <th scope="col">CurrentBid</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="let post of POSTS | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count} let i = index">
+                <td>{{i+1}}</td>
+                <td>{{post.userId}}</td>
+                <td>{{post.currentBid}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+
+
+        </pagination-controls>
+    </div>
+</div>
+</div>

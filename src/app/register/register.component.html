@@ -1,0 +1,38 @@
+<sam-login-register-navbar></sam-login-register-navbar>
+<div class="center" style="margin-top: 70px;" >
+    <h3 class="text-center mt-4 pb-4"><b>Register</b></h3>
+    <form #userForm="ngForm" class="mb-4 mt-4">
+        <div class="field">
+            <input [class.is-invallid]="name.invalid && name.touched" type="text" required #name="ngModel" name="name" [(ngModel)]="model.name">
+            <label>Name</label>
+        </div>
+        <div *ngIf="name.errors && (name.invalid && name.touched)">
+            <small class="text-danger" *ngIf="name.errors.required">name is Required</small>
+        </div>
+
+
+
+        <div class="field">
+            <input [class.is-invalid]="email.invalid && email.touched" type="email" required #email="ngModel" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" name="email" [(ngModel)]="model.email">
+            <label>Email</label>
+        </div>
+        <div *ngIf="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngIf="email.errors.required">Email is Required</small>
+            <small class="text-danger" *ngIf="email.errors.pattern">Email should be of form abc@gmail.com</small>
+
+        </div>
+
+
+        <div class="field">
+            <input [class.is-invalid]="password.invalid && password.touched" type="password" required #password="ngModel" name="password" [(ngModel)]="model.password">
+            <label>Password</label>
+        </div>
+        <div *ngIf="password.errors && (password.invalid && password.touched)">
+            <small class="text-danger" *ngIf="password.errors.required">Password is Required</small>
+        </div>
+
+
+        <button [disabled]="userForm.form.invalid" type="submit" (click)="saveUser()"> Register </button>
+    </form>
+</div>
+

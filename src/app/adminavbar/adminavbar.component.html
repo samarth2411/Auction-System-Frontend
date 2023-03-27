@@ -1,0 +1,13 @@
+<body style="background-color: rgba(243, 243, 254, 0.411);">
+    <nav class="navbar h-50" style="background-color: #90BBB5;">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/images/logo.jpg" width="40" height="40" class="d-inline-block align-top ms-2" alt="">
+            <h2 class="d-inline-block ms-2" style="color: black;"><b>Auction</b></h2>
+        </a>
+        <h4 class="ms-auto me-4" style="color: white;"><b>Welcome Admin : <span>{{user?.name}}</span>.</b></h4>
+        <a class="me-4" style="text-decoration: none;" (click)="logoutUser()">
+            <h4><b>Logout</b></h4>
+        </a>
+    </nav>
+    <sam-adminpanel></sam-adminpanel>
+</body>

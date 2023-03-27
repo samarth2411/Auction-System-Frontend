@@ -1,0 +1,13 @@
+<nav class="navbar h-50 mb-4" style="background-color: #90BBB5;">
+    
+        <img src="/assets/images/logo.jpg" width="40" height="40" class="d-inline-block align-top ms-2" alt="">
+        <h2 class="d-inline-block ms-2"><b>Auction</b></h2>
+    
+    <h3 class="ms-auto me-4" style="color: white;"><b>Welcome, <span>{{user?.name}}</span>.</b></h3>
+    <a class="me-4" style="text-decoration: none;" (click)="logoutUser()"><h3><b>Logout</b></h3></a>
+</nav>
+<h1 class="text-center pt-4 pb-4"><b>You are Logged in as !</b></h1>
+<div class="text-center mt-4">
+    <button (click)="dashboard()" type="button" class="btn btn-lg me-4" style="background-color: #61D2B4;">&nbsp;&nbsp; <b>Seller</b> &nbsp;&nbsp;</button>
+    <button (click)="buydashboard()"  type="button" class="btn btn-lg ms-4" style="background-color: #61D2B4;">&nbsp;&nbsp; <b>Bidder</b> &nbsp;&nbsp;</button>
+</div>
