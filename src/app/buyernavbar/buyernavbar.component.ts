@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BidserviceService } from '../bidservice.service';
 import { ProductserviceService } from '../productservice.service';
 import { UserserviceService } from '../userservice.service';
 
@@ -22,9 +23,9 @@ export class BuyernavbarComponent implements OnInit {
 
   user: any;
   email: any;
-  win: any;
-  loss: any;
-  constructor(private router: Router, private route: ActivatedRoute, private usersservice: UserserviceService, private productservice: ProductserviceService) {
+  won: any;
+  participated: any;
+  constructor(private bidderservice: BidserviceService ,private router: Router, private route: ActivatedRoute, private usersservice: UserserviceService, private productservice: ProductserviceService) {
   }
 
   getUser() {
@@ -33,8 +34,8 @@ export class BuyernavbarComponent implements OnInit {
       this.email = this.user.email;
       console.log(this.user);
       this.getAllInAuctionProducts();
-      this.getWinCount(this.email);
-      this.getLossCount(this.email);
+      this.getWinCount();
+      this.getTotalCount();
     })
   }
 
@@ -55,23 +56,26 @@ export class BuyernavbarComponent implements OnInit {
     })
   }
 
-  dashboard(){
-    this.router.navigate(["/buyernavbar"]);
+  myauction(){
+    this.router.navigate(["/myauction"]);
   }
 
-  getWinCount(email: any){
-    console.log(email);
-    this.productservice.getWinCount(email).subscribe((res)=>{
-      this.win = res;
+
+ 
+
+  getWinCount(){
+    console.log(this.email);
+    this.productservice.getWinCount(this.email).subscribe((res)=>{
+      this.won = res;
     })
   }
 
-  getLossCount(email:any){
-    console.log(email);
-    this.productservice.getLossCount(email).subscribe((res)=>{
-      this.loss = res;
-    })
-  }
+  // getLossCount(email:any){
+  //   console.log(email);
+  //   this.productservice.getLossCount(email).subscribe((res)=>{
+  //     this.loss = res;
+  //   })
+  // }
 
 
   onDataChange(event: any){
@@ -81,7 +85,17 @@ export class BuyernavbarComponent implements OnInit {
   }
 
   bid(id:any){
-    
+    this.router.navigate(["/bid"],{
+      queryParams:{data:JSON.stringify(id)}
+    })
+
+  }
+
+  getTotalCount(){
+    this.bidderservice.getCount(this.email).subscribe((res)=>{
+      this.participated = res;
+      console.log(this.participated);
+    })
   }
 
 }

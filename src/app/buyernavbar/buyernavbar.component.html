@@ -6,10 +6,7 @@
                 <h2 class="d-inline-block ms-2" style="color: black;"><b>Auction</b></h2>
             </a>
             <h4 class="ms-auto me-4" style="color: white;"><b>Welcome, <span>{{user?.name}}</span>.</b></h4>
-            <a (click)="dashboard()" class="me-4" style="text-decoration: none;">
-                <h4><b>Browse Auction</b></h4>
-            </a>
-            <a class="me-4" style="text-decoration: none;">
+            <a (click)="myauction()" class="me-4" style="text-decoration: none;">
                 <h4><b>My Auction</b></h4>
             </a>
             <a (click)="logoutUser()" class="me-4" style="text-decoration: none;">
@@ -22,7 +19,7 @@
             <div class="row col-2 row shadow   m-3 bg-body rounded p-2">
                 <div class="col">
                     <div class="bg-warning text-center w-25 text-center mx-auto m-2 px-4 py-1 rounded-pill">
-                        <span>{{win}}</span>
+                        <span>{{participated}}</span>
                     </div>
                     <h6 class="text-center Font fw-bold ">Participated</h6>
                 </div>
@@ -31,7 +28,7 @@
                 </div>
                 <div class="col ">
                     <div class="w-25 text-center mx-auto m-2 px-4 py-1 rounded-pill text-lg-center"
-                        style="background-color: rgb(39, 231, 39);"><span>{{loss}}</span></div>
+                        style="background-color: rgb(39, 231, 39);"><span>{{won}}</span></div>
                     <h6 class="text-center Font fw-bold">Won</h6>
                 </div>
 
@@ -52,7 +49,7 @@
                     <h6 class="Font fw-bold">Base Price: <span>${{products.price}}</span></h6>
                     <h6 class="Font fw-bold">Owner: <span>{{products.owner}}</span></h6>
 
-                    <button (click)="bid(products.id)" class="float-end"
+                    <button [disabled]="!products.active" (click)="bid(products.id)" class="float-end"
                         style="background-color: rgba(109, 192, 192, 0.303); text-decoration-color: rgb(112, 177, 177); border-color:rgb(112, 177, 177) ;">View
                         Auction </button>
 

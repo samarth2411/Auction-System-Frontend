@@ -44,7 +44,7 @@ export class ProductserviceService implements OnInit {
   }
 
   getWinCount(email:string){
-    return this.http.post('http://localhost:8080/totalWins', + '/' + email , {withCredentials:true})
+    return this.http.post('http://localhost:8080/totalWins' + '/' + email , {withCredentials:true})
   }
 
   getLossCount(email:string){

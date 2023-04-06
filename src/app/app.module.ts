@@ -19,6 +19,8 @@ import { BiddertableComponent } from './biddertable/biddertable.component';
 import { AdminavbarComponent } from './adminavbar/adminavbar.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { BuyernavbarComponent } from './buyernavbar/buyernavbar.component';
+import { BidComponent } from './bid/bid.component';
+import { MyauctionComponent } from './myauction/myauction.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { BuyernavbarComponent } from './buyernavbar/buyernavbar.component';
     AdminavbarComponent,
     AdminpanelComponent,
     BuyernavbarComponent,
+    BidComponent,
+    MyauctionComponent,
   ],
   imports: [
     BrowserModule,

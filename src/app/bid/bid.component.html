@@ -1,0 +1,132 @@
+<body style="background-color: #f6f6f6;">
+    <section>
+        <nav class="navbar h-50 mb-4" style="background-color: #90BBB5;">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/images/logo.jpg" width="40" height="40" class="d-inline-block align-top ms-2" alt="">
+                <h2 class="d-inline-block ms-2" style="color: black;"><b>Auction</b></h2>
+            </a>
+            <h4 class="ms-auto me-4" style="color: white;"><b>Welcome, <span>{{user?.name}}</span>.</b></h4>
+            <a (click)="dashboard()" class="me-4" style="text-decoration: none;">
+                <h4><b>Browse Auction</b></h4>
+            </a>
+            <a (click)="myauction()" class="me-4" style="text-decoration: none;">
+                <h4><b>My Auction</b></h4>
+            </a>
+            <a (click)="logoutUser()" class="me-4" style="text-decoration: none;">
+                <h4><b>Logout</b></h4>
+            </a>
+        </nav>
+
+
+        <div class="bg-white p-4 shadow mx-4 rounded-start-2">
+            <div class="row col-3 row shadow   m-3 bg-body rounded p-2 mx-auto">
+                <div class="col   ">
+                    <div class="bg-warning text-center w-75  text-center mx-auto m-2  py-1 rounded-pill">
+                        {{participated}}</div>
+                    <h6 class="text-center Font fw-bold ">Participated</h6>
+                </div>
+                <div class="d-flex d-lg-inline-flex col-auto">
+                    <div class="vr"></div>
+                </div>
+                <div class="col ">
+                    <div class="w-75 text-center mx-auto m-2 px-4 py-1 rounded-pill text-lg-center"
+                        style="background-color: rgb(39, 231, 39);">{{win}}</div>
+                    <h6 class="text-center Font fw-bold">Won</h6>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="m-3 row">
+
+            <div class="col-4 bg-white shadow p-4 rounded rounded-2 ">
+
+                <img class="card-img my-2 rounded-2" src="/assets/images/CARD.jpeg.jpg" alt="">
+                <div class="card ">
+                    <h5 class="card-header">Descritption</h5>
+                    <div class="card-body">
+                        <h5 class="card-title text-decoration-underline Font fw-bold">{{product.name}}</h5>
+                        <p class="card-text">{{product.description}}</p>
+
+                        <h6 class="Font fw-bold">Base Price: $<span>{{product.price}}</span></h6>
+                        <h6 class="Font fw-bold">Owner: <span>{{product.owner}}</span></h6>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col m-2">
+
+                <div *ngIf="product.active; then conditionTrue; else conditionFalse"></div>
+                <ng-template #conditionTrue>
+                    <div class="shadow bg-white p-3 rounded rounded-2">
+                        <h1 class="fw-bold Font ">View Listing: <span>{{product.name}}</span></h1>
+
+                        <form class=" m-2 my-4 p-4 border border-1 border-dark rounded-2">
+                            <div class="row  align-items-center">
+                                <div class="col-auto">
+                                    <label for="inputPassword6" class="fs-4 col-form-label">Enter Amount</label>
+                                </div>
+                                <div class="col-4">
+
+
+                                    <input type="text" class="form-control" placeholder="Your Bid" name="currentBid"
+                                        [(ngModel)]="model.currentBid" />
+
+                                </div>
+
+                                <button (click)="addBidder()" class=" Font fs-4 px-3 btn w-auto mx-lg-5 "
+                                    style=" box-sizing: 10px; background-color: rgba(109, 192, 192, 0.303); text-decoration-color: rgb(112, 177, 177); border-color:rgb(112, 177, 177) ;">
+                                    Bid!</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <!-- <br> -->
+
+                    <div class=" w-auto  m-4 col-md shadow bg-white p-3 rounded rounded-2">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">S.No</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">CurrentBid</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let post of POSTS | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count} let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{post.userId}}</td>
+                                    <td>{{post.currentBid}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <pagination-controls previousLabel="Prev" nextLabel="Next"
+                                (pageChange)="onTableDataChange($event)">
+
+
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template #conditionFalse>
+                    <div style="background-color: white; padding-left: 10px;">
+                        <h2 *ngIf="product.winner!=null">The Bidding of this Product has Been Closed and the winner of
+                            the Bid is: {{product.winner}}</h2>
+                        <h2 *ngIf="product.winner==null">The Bidding of this Product has Been Closed</h2>
+                    </div>
+                </ng-template>
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+</body>

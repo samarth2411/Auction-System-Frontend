@@ -4,6 +4,7 @@ import { Users } from '../users';
 import { UserserviceService } from '../userservice.service';
 import { FormGroup, FormControl, Validator } from '@angular/forms';
 import { query } from '@angular/animations';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'sam-login',
@@ -31,10 +32,20 @@ export class LoginComponent implements OnInit {
         this.getData = res;
         if(this.getData != null){
           console.log(this.getData);
+          Swal.fire(
+            'Congratulations!',
+            'You are now Logged In!',
+            'success'
+          )
           this.router.navigate(["/adminPage"]);
         }
         else{
-          alert("Invalid User! Please Register First");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href="/register"> Please register First? </a>'
+          })
         }
       })
     }
@@ -45,11 +56,21 @@ export class LoginComponent implements OnInit {
 
         if (this.getData != null) {
           console.log(this.getData);
-          // localStorage.setItem('email', this.getData.email);
+          Swal.fire(
+            'Congratulations!',
+            'You are now Logged In!',
+            'success'
+          )
           this.router.navigate(["/choose"]);
         }
         else {
-          alert("Invalid User! Please Register First");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            footer: '<a href="/register"> Please register First? </a>'
+          })
+          
         }
 
 

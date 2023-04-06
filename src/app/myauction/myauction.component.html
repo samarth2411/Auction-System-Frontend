@@ -1,0 +1,51 @@
+<section>
+    <nav class="navbar h-50 mb-4" style="background-color: #90BBB5;">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/images/logo.jpg" width="40" height="40" class="d-inline-block align-top ms-2" alt="">
+            <h2 class="d-inline-block ms-2" style="color: black;"><b>Auction</b></h2>
+        </a>
+        <h4 class="ms-auto me-4" style="color: white;"><b>Welcome, <span>{{user?.name}}</span>.</b></h4>
+        <a (click)="dashboard()" class="me-4" style="text-decoration: none;">
+            <h4><b>Browse Auction</b></h4>
+        </a>
+        <a (click)="logoutUser()" class="me-4" style="text-decoration: none;">
+            <h4><b>Logout</b></h4>
+        </a>
+    </nav>
+
+    <h1 class="Font m-5 text-center fw-bold">Your Previous Bids</h1>
+    <div class="">
+        <table class="table table-hover table-light align-middle m-3 w-50 mx-auto p-2">
+            <thead>
+                <tr class="mx-auto">
+                    <th scope="col" class="Font fs-5 ">
+                        <span class="">S.No</span>
+                    </th>
+                    <th scope="col" class="Font fs-5 text-center">Product</th>
+                    <th scope="col" class="Font fs-5 text-center">Product Owner</th>
+                    <th scope="col" class="Font fs-5 text-center">Start Time</th>
+                    <th scope="col" class="Font fs-5 text-center">End Time</th>
+                    <th scope="col" class="Font fs-5 text-center">Winner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bidders of participated; let i = index">
+                    <th scope="row ">{{i+1}}</th>
+                    <td class="text-center">
+                        <div class=" ">
+                            <img src="/assets/images/auction.jpg" alt="" class="rounded-circle d-inline-flex"
+                                style="height: 4vw" />
+                            <p class="d-inline-flex my-auto m-3">{{bidders.name}}</p>
+                        </div>
+                    </td>
+                    <td class="text-center">{{bidders.owner}}</td>
+                    <td class="text-center">{{bidders.startTime | date:'medium'}}</td>
+                    <td class="text-center">{{bidders.endTime | date:'medium'}}</td>
+                    <td class="text-center">{{bidders.winner!=null? bidders.winner: "Winner Not Announced"}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
